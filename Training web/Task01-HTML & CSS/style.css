@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+li {
+  float: left;
+
+  margin: 1em 2em 0 1em;
+  width: 27em;
+
+  list-style-type: none;
+}
+
+hr {
+  margin-bottom: 0.5em;
+}
+
+.options .description {
+  min-height: 11em;
+
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.options img {
+  float: left;
+
+  margin-right: 1em;
+}
+
+.options .side-buy-text {
+  display: inline;
+
+  font-weight: bold;
+}
+
+.options button {
+  float: right;
+  padding: 1em 7em;
+  border-radius: 20px;
+
+  border: none;
+  color: white;
+  background-color: #000;
+}
