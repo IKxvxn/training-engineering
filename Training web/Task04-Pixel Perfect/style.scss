@@ -51,7 +51,9 @@ body {
     left: 0;
     top: $header-height;
     text-align: right;
-    display: none;
+    @include display-flex(column, space-between, center);
+    z-index: 9999;
+    visibility: hidden;
   }
 
   &__item {
@@ -60,6 +62,11 @@ body {
     background: $primary-color;
     border: 2px solid $primary-color;
     cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+    }
   }
 
   &__label {
@@ -182,6 +189,14 @@ body {
   }
 }
 
+#toggle {
+  display: none;
+}
+
+#toggle:checked ~ .header__nav {
+  visibility: visible;
+}
+
 @media only screen and (min-width: 768px) {
   $footer-height: 60px;
   $footer-content-margin: 20px;
@@ -243,6 +258,7 @@ body {
     &__nav {
       position: static;
       @include display-flex(row, right, center);
+      visibility: visible;
     }
 
     &__item {
@@ -278,12 +294,4 @@ body {
       grid-template-columns: repeat(3, 1fr);
     }
   }
-}
-
-#toggle {
-  display: none;
-}
-
-#toggle:checked ~ .header__nav {
-  @include display-flex(column, space-between, center);
 }
