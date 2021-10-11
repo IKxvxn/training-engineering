@@ -1,41 +1,36 @@
-import mobileLogo from "../../images/banner-mobile.png";
-import largeLogo from "../../images/banner.png";
+import { useState, useEffect } from "react";
+import Banner from "../banner/banner";
+import CompaniesList from "../companiesList/companiesList";
+import SearchBar from "../searchBar/searchBar";
 
-const main = () => {
+const Main = () => {
+  const [companies, setCompanies] = useState([]);
+  const [filteredCompanies, setFilteredCompanies] = useState([]);
+
+  const getCompanies = () => {
+    fetch("https://my-json-server.typicode.com/IKxvxn/fake-server/companies", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(r => r.json())
+      .then(data => {
+        setCompanies(data);
+        setFilteredCompanies(data);
+      })
+      .catch(e => console.error(e));
+  };
+
+  useEffect(() => {
+    getCompanies();
+  });
+
   return (
     <main className="main">
-      <div className="main__img-container">
-        <picture>
-          <source srcset={largeLogo} media="(min-width: 768px)" />
-          <img
-            className="main__img main__img--cover"
-            src={mobileLogo}
-            alt="page-banner"
-          />
-        </picture>
-      </div>
-      <div className="main__welcome-container">
-        <h2 className="main__title">Los mejores agentes de seguridad</h2>
-        <div className="main__search-container">
-          <input
-            id="companies-search-input"
-            className="main__search-input"
-            placeholder="Buscar por Ubicación"
-            type="search"
-          />
-          <button
-            className="main__search-btn icon-search"
-            type="button"
-            onclick="filterCompaniesList()"
-          />
-        </div>
-      </div>
-      <ul
-        id="items-container"
-        className="main__grid-list main__grid-list--no-bullet"
-      />
+      <Banner />
+      <SearchBar />
+      <CompaniesList filteredCompanies={filteredCompanies} />
     </main>
   );
 };
 
-export default main;
+export default Main;
