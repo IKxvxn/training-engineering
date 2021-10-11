@@ -94,6 +94,7 @@ $footer-content-margin: 10px;
     }
     &-btn {
       font-family: inherit;
+      cursor: pointer;
       @include without-borders;
     }
   }
@@ -112,6 +113,11 @@ $footer-content-margin: 10px;
     }
   }
 
+  &__certified {
+    height: 30px;
+    width: auto;
+  }
+
   &__grid-list {
     display: grid;
 
@@ -121,25 +127,26 @@ $footer-content-margin: 10px;
   }
 
   &__item {
-    margin: 1em;
+    margin: 0.5em;
     padding: 1em;
 
     &-img {
-      height: 175px;
+      height: 126px;
       width: auto;
       float: left;
       margin-right: 1em;
     }
 
     &-description {
-      min-height: 11em;
+      min-height: 9em;
+      font-size: 14px;
       text-align: justify;
       text-justify: inter-word;
     }
 
     &-title {
       display: inline;
-      font-size: 20px;
+      font-size: 18px;
     }
 
     &-side-text {
