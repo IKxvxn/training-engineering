@@ -5,11 +5,7 @@
           box-sizing: border-box;
 }
 
-button {
-  font-family: inherit;
-}
-
-body {
+.body {
   font-family: "Roboto", sans-serif;
 }
 
@@ -113,6 +109,7 @@ body {
 }
 
 .main__search-btn {
+  font-family: inherit;
   border: none;
   background-color: transparent;
   color: #8e8e8e;
@@ -176,6 +173,7 @@ body {
   border-radius: 25px;
   font-size: 15px;
   cursor: pointer;
+  font-family: inherit;
 }
 
 .main__item-btn--dark {

@@ -29,11 +29,7 @@ $footer-content-margin: 10px;
   box-sizing: border-box;
 }
 
-button {
-  font-family: inherit;
-}
-
-body {
+.body {
   font-family: "Roboto", sans-serif;
 }
 
@@ -97,6 +93,7 @@ body {
       @include without-borders;
     }
     &-btn {
+      font-family: inherit;
       @include without-borders;
     }
   }
@@ -155,6 +152,7 @@ body {
       border-radius: 25px;
       font-size: 15px;
       cursor: pointer;
+      font-family: inherit;
 
       &--dark {
         border: none;
