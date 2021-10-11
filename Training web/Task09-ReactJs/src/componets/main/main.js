@@ -1,16 +1,15 @@
-import logo from "../../images/logo.svg";
-//import mobileLogo from "../../images/mobileLogo.png";
-//import largeLogo from "../../images/largeLogo.png";
+import mobileLogo from "../../images/banner-mobile.png";
+import largeLogo from "../../images/banner.png";
 
 const main = () => {
   return (
     <main className="main">
       <div className="main__img-container">
         <picture>
-          <source srcset={logo} media="(min-width: 768px)" />
+          <source srcset={largeLogo} media="(min-width: 768px)" />
           <img
             className="main__img main__img--cover"
-            src={logo}
+            src={mobileLogo}
             alt="page-banner"
           />
         </picture>
