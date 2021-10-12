@@ -17,7 +17,7 @@
     />
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
-  <body>
+  <body class="body">
     <header class="header">
       <img src="./images/logo.svg" alt="logo" />
       <label class="header__label icon-bars" for="toggle"></label>
@@ -68,7 +68,7 @@
         <li class="main__item">
           <div class="main__title-container">
             <h3 class="main__item-title">{{title}}</h3>
-            <img src="./images/certified.png" />
+            <img class="main__certified" src="./images/certified.png" />
            </div>
            <hr />
            <img class="main__item-img" src={{image}} alt="Bodyguards" />
@@ -83,15 +83,9 @@
         </li>
       {{/each}}
     </script>
-
     <script type="module">
-      import {defaultData} from './data.js'
-
-      let element = document.getElementById("item-template").innerHTML;
-      let template = Handlebars.compile(element);
-      let final = template(defaultData);
-      
-      document.getElementById("items-container").innerHTML += final;
+      import {loadCompanies} from "./utilities.js"
+      loadCompanies();
     </script>
   </body>
 </html>
