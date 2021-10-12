@@ -2,22 +2,26 @@ import { Fragment } from "react";
 import certified from "../../images/certified.png";
 
 const CompaniesList = props => {
-  const { name, description, isCertified, image, hours, rate } = props;
+  const { name, description, isCertified, image, hours, rate, key } = props;
   return (
-    <li class="main__item">
-      <div class="main__title-container">
-        <h3 class="main__item-title">{name}</h3>
-        {props.isCertified ? <img src={certified} /> : <Fragment />}
+    <li className="main__item" key={key}>
+      <div className="main__title-container">
+        <h3 className="main__item-title">{name}</h3>
+        {isCertified ? (
+          <img className="main__certified" src={certified} />
+        ) : (
+          <Fragment />
+        )}
       </div>
       <hr />
-      <img class="main__item-img" src={image} alt="Bodyguards" />
-      <p class="main__item-description">{description}</p>
+      <img className="main__item-img" src={image} alt="Bodyguards" />
+      <p className="main__item-description">{description}</p>
       <br />
-      <div class="main__purchase-container">
-        <p class="main__item-side-text">
+      <div className="main__purchase-container">
+        <p className="main__item-side-text">
           Desde ${rate} {hours} horas
         </p>
-        <button class="main__item-btn main__item-btn--dark" type="button">
+        <button className="main__item-btn main__item-btn--dark" type="button">
           Contratar
         </button>
       </div>

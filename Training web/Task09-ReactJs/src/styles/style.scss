@@ -29,11 +29,7 @@ $footer-content-margin: 10px;
   box-sizing: border-box;
 }
 
-button {
-  font-family: inherit;
-}
-
-body {
+.body {
   font-family: "Roboto", sans-serif;
 }
 
@@ -97,6 +93,8 @@ body {
       @include without-borders;
     }
     &-btn {
+      font-family: inherit;
+      cursor: pointer;
       @include without-borders;
     }
   }
@@ -115,6 +113,11 @@ body {
     }
   }
 
+  &__certified {
+    height: 30px;
+    width: auto;
+  }
+
   &__grid-list {
     display: grid;
 
@@ -124,27 +127,28 @@ body {
   }
 
   &__item {
-    margin: 1em;
+    margin: 0.5em;
     padding: 1em;
 
     &-img {
-      height: 175px;
+      height: 126px;
       width: auto;
       float: left;
       margin-right: 1em;
     }
 
     &-description {
-      min-height: 11em;
+      min-height: 9em;
+      font-size: 14px;
       text-align: justify;
       text-justify: inter-word;
     }
 
     &-title {
-      margin-top: 0.6em;
-      margin-bottom: 0.6em;
+      margin-top: 0.4em;
+      margin-bottom: 0.4em;
       display: inline;
-      font-size: 20px;
+      font-size: 18px;
     }
 
     &-side-text {
@@ -157,6 +161,7 @@ body {
       border-radius: 25px;
       font-size: 15px;
       cursor: pointer;
+      font-family: inherit;
 
       &--dark {
         border: none;
@@ -164,6 +169,7 @@ body {
         background-color: #000;
       }
     }
+
     &--hidden {
       display: none;
     }
