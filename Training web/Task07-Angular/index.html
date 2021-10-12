@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <script src="handlebars-v4.7.7.js"></script>
+    <script type="text/javascript" src="utilities.js"></script>
     <link
       href="http://fonts.googleapis.com/css?family=Roboto"
       rel="stylesheet"
@@ -17,7 +18,7 @@
     />
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
-  <body>
+  <body class="body">
     <header class="header">
       <img src="./images/logo.svg" alt="logo" />
       <label class="header__label icon-bars" for="toggle"></label>
@@ -65,7 +66,7 @@
           <div class="main__title-container">
             <h3 class="main__item-title">{{name}}</h3>
             {{#if isCertified}}
-              <img src="./images/certified.png" />
+              <img class="main__certified" src="./images/certified.png" />
             {{/if}}
            </div>
            <hr />
@@ -82,34 +83,11 @@
       {{/each}}
     </script>
     <script type="text/javascript">
-      let element = document.getElementById("item-template").innerHTML;
-      let template = Handlebars.compile(element);
+      loadCompanies();
 
-      fetch("https://my-json-server.typicode.com/IKxvxn/fake-server/companies", {method:'GET', headers: { 'Content-Type': 'application/json' }})
-      .then(r => r.json())
-      .then(data => {
-        let final = template(data);
-        document.getElementById("items-container").innerHTML += final;
-      })
-      .catch(e => console.error(e))
-
-      document.getElementById("companies-search-input").onkeydown = event => {
-        if (event.keyCode == 13) {
+      document.getElementById("companies-search-input").onkeyup = (e) => {
+        if(e.keyCode == 13) {
           filterCompaniesList();
-        }
-      }
-
-      function filterCompaniesList() {
-        value = document.getElementById("companies-search-input").value.toLowerCase()
-        items = document.getElementsByClassName("main__item")
-        
-        for(let item of items) {
-          if(item.childNodes[1].childNodes[1].innerHTML.toLowerCase().includes(value)) {
-            item.classList.remove("main__item--hidden")
-          }
-          else {
-            item.classList.add("main__item--hidden")
-          }
         }
       }
     </script>
