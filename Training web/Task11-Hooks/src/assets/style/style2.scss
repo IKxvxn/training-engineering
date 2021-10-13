@@ -1,0 +1,126 @@
+$primary-color: #ffba00;
+$secondary-color: #1c1c1c;
+$primary-font-color: #fff5dc;
+$secondary-font-color: #1c1c1c;
+
+.html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  margin-top: -0.7em;
+  padding: 0;
+  background-color: $primary-color;
+  font-family: "Roboto", sans-serif;
+}
+
+.header {
+  width: 100%;
+  height: 80px;
+  background-color: $secondary-color;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: $primary-font-color;
+
+  &__text {
+    padding: 1em;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.board {
+  width: 600px;
+  height: 600px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: auto auto;
+
+  &__container {
+    width: 100%;
+    min-height: calc(100vh - 90px - 90px);
+  }
+
+  &__hole {
+    overflow: hidden;
+    position: relative;
+
+    &:after {
+      display: block;
+      background: url("../imgs/dirt.svg") bottom center no-repeat;
+      background-size: contain;
+      content: "";
+      width: 100%;
+      height: 70px;
+      position: absolute;
+      z-index: 2;
+      bottom: -30px;
+    }
+  }
+
+  &__mole {
+    background: url("../imgs/mole.svg") bottom center no-repeat;
+    background-size: 50%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: all 0.4s;
+
+    &--up {
+      top: 0;
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: x-large;
+  color: $secondary-font-color;
+
+  &__item {
+    margin: 1em;
+
+    &--container {
+      display: flex;
+      align-items: center;
+      background-color: $primary-font-color;
+      border-radius: 50px;
+    }
+  }
+
+  &__input {
+    width: 120px;
+    margin-right: 10px;
+    background-color: $primary-font-color;
+    font-size: 20px;
+    text-align: center;
+    border: none;
+  }
+
+  &__btn {
+    border-radius: 30px;
+    border-color: $secondary-color;
+    padding: 1rem;
+    font-size: x-large;
+    color: $primary-font-color;
+    font-weight: bolder;
+    background-color: firebrick;
+  }
+
+  &__a {
+    padding: 10px;
+    font-weight: bolder;
+    cursor: pointer;
+
+    &--disabled {
+      font-weight: lighter;
+      cursor: not-allowed;
+    }
+  }
+}
