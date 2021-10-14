@@ -1,8 +1,9 @@
-export const Header = () => {
+export const Header = props => {
+  const { score } = props;
   return (
     <div className="header">
-      <h1 className="header__text">Whack-a-mole!</h1>
-      <h1 className="header__text">Score: 0</h1>
+      <h3 className="header__text">Whack-a-mole!</h3>
+      <h3 className="header__text">Score: {score}</h3>
     </div>
   );
 };

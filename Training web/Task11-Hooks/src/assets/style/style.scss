@@ -2,13 +2,26 @@ $primary-color: #ffba00;
 $secondary-color: #1c1c1c;
 $primary-font-color: #fff5dc;
 $secondary-font-color: #1c1c1c;
+$header-h: 80px;
+$footer-h: 100px;
+
+@mixin display-flex-h-spaceb-v-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin use-all-remainSpace {
+  width: 100%;
+  min-height: calc(100vh - #{$footer-h} - #{$header-h});
+}
 
 .html,
 body {
   width: 100%;
   height: 100%;
   margin: 0;
-  margin-top: -0.7em;
   padding: 0;
   background-color: $primary-color;
   font-family: "Roboto", sans-serif;
@@ -16,30 +29,26 @@ body {
 
 .header {
   width: 100%;
-  height: 80px;
+  height: $header-h;
+  @include display-flex-h-spaceb-v-center();
   background-color: $secondary-color;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   color: $primary-font-color;
 
   &__text {
-    padding: 1em;
-    display: flex;
-    align-items: center;
+    padding: 0.9em;
+    font-size: 20px;
   }
 }
 
 .board {
-  width: 600px;
-  height: 600px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin: auto auto;
+  @include use-all-remainSpace();
 
-  &__container {
-    width: 100%;
-    min-height: calc(100vh - 90px - 90px);
+  &__content {
+    width: 360px;
+    min-height: 800px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: auto auto;
   }
 
   &__hole {
@@ -65,6 +74,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
+    top: 100%;
     transition: all 0.4s;
 
     &--up {
@@ -75,22 +85,22 @@ body {
 
 .footer {
   width: 100%;
-  height: 80px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  min-height: $footer-h;
+  @include display-flex-h-spaceb-v-center();
+  flex-direction: column;
   font-size: x-large;
   color: $secondary-font-color;
 
   &__item {
-    margin: 1em;
+    margin-top: 0.5em;
 
     &--container {
-      display: flex;
-      align-items: center;
       background-color: $primary-font-color;
       border-radius: 50px;
+    }
+
+    &--hidden {
+      visibility: hidden;
     }
   }
 
@@ -106,7 +116,7 @@ body {
   &__btn {
     border-radius: 30px;
     border-color: $secondary-color;
-    padding: 1rem;
+    padding: 10px;
     font-size: x-large;
     color: $primary-font-color;
     font-weight: bolder;
@@ -114,13 +124,69 @@ body {
   }
 
   &__a {
-    padding: 10px;
+    padding: 5px;
     font-weight: bolder;
     cursor: pointer;
 
     &--disabled {
       font-weight: lighter;
       cursor: not-allowed;
+    }
+  }
+}
+
+.leaders {
+  @include use-all-remainSpace();
+  text-align: center;
+  &__title {
+    display: inline;
+  }
+
+  &__table {
+    width: 70%;
+    height: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-rows: repeat(7, 1fr);
+    grid-row-gap: 1em;
+  }
+
+  &__element {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__separator {
+    width: 100%;
+    height: 50%;
+    border-bottom: 3px dotted $secondary-font-color;
+  }
+
+  &__data {
+    display: inline;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .header {
+    &__text {
+      font-size: x-large;
+    }
+  }
+
+  .board {
+    &__content {
+      width: 600px;
+      min-height: 600px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .footer {
+    flex-direction: row;
+
+    &__item {
+      margin: 1em;
     }
   }
 }

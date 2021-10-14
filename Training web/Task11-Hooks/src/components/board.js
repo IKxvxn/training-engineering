@@ -1,34 +1,25 @@
-export const Board = () => {
+import hitAudio from "../assets/sounds/hihat.wav";
+import missAudio from "../assets/sounds/kick.wav";
+import Tile from "./tile";
+
+export const Board = props => {
+  const { board, timeUp } = props;
+  const hit = new Audio(hitAudio);
+  const miss = new Audio(missAudio);
+
   return (
-    <div className="board__container">
-      <div className="board">
-        <div className="board__hole hole1">
-          <div className="board__mole"></div>
-        </div>
-        <div className="board__hole hole2">
-          <div className="board__mole"></div>
-        </div>
-        <div className="board__hole hole3">
-          <div className="board__mole"></div>
-        </div>
-        <div className="board__hole hole4">
-          <div className="board__mole"></div>
-        </div>
-        <div className="board__hole hole5">
-          <div className="board__mole"></div>
-        </div>
-        <div className="board__hole hole6">
-          <div className="board__mole"></div>
-        </div>
-        <div className="board__hole hole7">
-          <div className="board__mole"></div>
-        </div>
-        <div className="board__hole hole8">
-          <div className="board__mole"></div>
-        </div>
-        <div className="board__hole hole9">
-          <div className="board__mole"></div>
-        </div>
+    <div className="board">
+      <div
+        className="board__content"
+        onClick={() => {
+          if (!timeUp) miss.play();
+        }}
+      >
+        {board.map((isMoleUp, index) => {
+          return (
+            <Tile isMoleUp={isMoleUp} index={index} hit={hit} {...props} />
+          );
+        })}
       </div>
     </div>
   );

@@ -1,19 +1,208 @@
-@import "./game.css";
-
-html {
-  box-sizing: border-box;
-  background: #ffba00;
-  font-family: "helvetica neue";
-  font-size: 20px;
-  font-weight: 200;
-}
-
+.html,
 body {
+  width: 100%;
+  height: 100%;
   margin: 0;
+  padding: 0;
+  background-color: #ffba00;
+  font-family: "Roboto", sans-serif;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
+.header {
+  width: 100%;
+  height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #1c1c1c;
+  color: #fff5dc;
 }
+
+.header__text {
+  padding: 0.9em;
+  font-size: 20px;
+}
+
+.board {
+  width: 100%;
+  min-height: calc(100vh - 100px - 80px);
+}
+
+.board__content {
+  width: 360px;
+  min-height: 800px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  margin: auto auto;
+}
+
+.board__hole {
+  overflow: hidden;
+  position: relative;
+}
+
+.board__hole:after {
+  display: block;
+  background: url("../imgs/dirt.svg") bottom center no-repeat;
+  background-size: contain;
+  content: "";
+  width: 100%;
+  height: 70px;
+  position: absolute;
+  z-index: 2;
+  bottom: -30px;
+}
+
+.board__mole {
+  background: url("../imgs/mole.svg") bottom center no-repeat;
+  background-size: 50%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 100%;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.board__mole--up {
+  top: 0;
+}
+
+.footer {
+  width: 100%;
+  min-height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  font-size: x-large;
+  color: #1c1c1c;
+}
+
+.footer__item {
+  margin-top: 0.5em;
+}
+
+.footer__item--container {
+  background-color: #fff5dc;
+  border-radius: 50px;
+}
+
+.footer__item--hidden {
+  visibility: hidden;
+}
+
+.footer__input {
+  width: 120px;
+  margin-right: 10px;
+  background-color: #fff5dc;
+  font-size: 20px;
+  text-align: center;
+  border: none;
+}
+
+.footer__btn {
+  border-radius: 30px;
+  border-color: #1c1c1c;
+  padding: 10px;
+  font-size: x-large;
+  color: #fff5dc;
+  font-weight: bolder;
+  background-color: firebrick;
+}
+
+.footer__a {
+  padding: 5px;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.footer__a--disabled {
+  font-weight: lighter;
+  cursor: not-allowed;
+}
+
+.leaders {
+  width: 100%;
+  min-height: calc(100vh - 100px - 80px);
+  text-align: center;
+}
+
+.leaders__title {
+  display: inline;
+}
+
+.leaders__table {
+  width: 70%;
+  height: 100%;
+  margin: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[7];
+      grid-template-rows: repeat(7, 1fr);
+  grid-row-gap: 1em;
+}
+
+.leaders__element {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.leaders__separator {
+  width: 100%;
+  height: 50%;
+  border-bottom: 3px dotted #1c1c1c;
+}
+
+.leaders__data {
+  display: inline;
+}
+
+@media only screen and (min-width: 768px) {
+  .header__text {
+    font-size: x-large;
+  }
+  .board__content {
+    width: 600px;
+    min-height: 600px;
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+  .footer {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .footer__item {
+    margin: 1em;
+  }
+}
+/*# sourceMappingURL=style.css.map */
